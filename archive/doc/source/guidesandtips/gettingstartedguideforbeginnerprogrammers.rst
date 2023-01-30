@@ -81,18 +81,21 @@ Enter the following code in the script editor:
 
 .. code:: javascript
 
+    // This is broken as is. Someone forgot to put ns. in front of all their calls. Maybe the game changed after this was written.
+    // Will throw an undefined error as is.  Once you fix that you get another error about concurrent calls.  Was this script intended to make new
+    // players troubleshoot it?  Maybe retire this part of the guide.
     // Defines the "target server", which is the server
     // that we're going to hack. In this case, it's "n00dles"
     var target = "n00dles";
 
     // Defines how much money a server should have before we hack it
     // In this case, it is set to 75% of the server's max money
-    var moneyThresh = getServerMaxMoney(target) * 0.75;
+    var moneyThresh = NS.getServerMaxMoney(target) * 0.75;
 
     // Defines the maximum security level the target server can
     // have. If the target's security level is higher than this,
     // we'll weaken it before doing anything else
-    var securityThresh = getServerMinSecurityLevel(target) + 5;
+    var securityThresh = NS.getServerMinSecurityLevel(target) + 5;
 
     // If we have the BruteSSH.exe program, use it to open the SSH Port
     // on the target server
